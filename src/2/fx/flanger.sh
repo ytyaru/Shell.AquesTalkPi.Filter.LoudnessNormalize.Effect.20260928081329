@@ -36,9 +36,9 @@ Flanger() {
 	local depth=${2:-2}
 	local regen=${3:-0}
 	local width=${4:-71}
-	local speed=${4:-0.5}
-	local shape=${4:-sine}
-	local phase=${4:-25}
+	local speed=${5:-0.5}
+	local shape=${6:-sine}
+	local phase=${7:-25}
 	sox -t wav - -t wav - flanger $delay $depth $regen $width $speed $shape $phase
 }
 
