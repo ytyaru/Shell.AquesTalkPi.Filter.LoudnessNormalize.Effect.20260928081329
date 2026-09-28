@@ -4,7 +4,6 @@ cd "$HERE"
 . fx/delay.sh
 . fx/chorus.sh
 . fx/echo.sh
-#. fx/fade.sh
 . fx/fade-in.sh
 . fx/fade-out.sh
 . fx/flanger.sh
@@ -45,14 +44,16 @@ loudness_normalize() {
 	ffmpeg -i pipe:0 -af $PARAM -ar $RATE -f wav pipe:1
 }
 # $AQ_OPTにクォートは付けないこと（スペース区切りを有効化するため）
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | reverb | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | delay 0.9 | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | chorus | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Echo | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Reverb | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Delay 0.9 | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Chorus | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Echo | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Fade | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | FadeIn | FadeOut | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Flanger | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | FadeIn | FadeOut | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Flanger | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Phaser | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Tremolo | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vibrato | loudness_normalize | aplay
@@ -60,12 +61,8 @@ loudness_normalize() {
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | OverDrive | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Saturator | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Fuzz | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder hi | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder low | loudness_normalize | aplay
 "$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder hi | loudness_normalize | aplay
-#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder low | loudness_normalize | aplay
-
-#WAV_Base64=$(aquestalkpi "$AQ" $AQ_OPT "$AQ_TXT" | base64)
-#WAV=$("$AQ" $AQ_OPT "$AQ_TXT")
-#echo -n "$WAV" | base64 -d | aq_filters "$AQ_OPT" | loudness_normalize | aplay
-
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder | Chorus | Reverb | loudness_normalize | aplay
 
