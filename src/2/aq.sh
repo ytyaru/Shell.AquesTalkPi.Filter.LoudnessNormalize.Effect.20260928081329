@@ -11,6 +11,11 @@ cd "$HERE"
 . fx/phaser.sh
 . fx/tremolo.sh
 . fx/vibrato.sh
+. fx/distortion.sh
+. fx/overdrive.sh
+. fx/saturator.sh
+. fx/fuzz.sh
+. fx/vocoder.sh
 AQ=/home/pi/root/sys/env/tool/aquestalkpi/1.20/AquesTalkPi
 AQ_TXT='アクエストークパイで音声合成のテストをします。'
 AQ_OPT='-v f2'
@@ -50,7 +55,12 @@ loudness_normalize() {
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Flanger | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Phaser | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Tremolo | loudness_normalize | aplay
-"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vibrato | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vibrato | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Distortion | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | OverDrive | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Saturator | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Fuzz | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Vocoder | loudness_normalize | aplay
 
 #WAV_Base64=$(aquestalkpi "$AQ" $AQ_OPT "$AQ_TXT" | base64)
 #WAV=$("$AQ" $AQ_OPT "$AQ_TXT")
