@@ -13,7 +13,10 @@ getParam() {
 	case $1 in
 		low)  echo 'pitch -800 synth sine fmod 90 lowpass 1000 vol 2.5';;
 		hi)   echo 'pitch 700 synth sine fmod 180 highpass 300 vol 1.5';;
-		*)    echo 'ladspa '"$(dpkg -L autotalent | grep autotalent.so)"' autotalent 440 0 0 0 -1.1 0 0 -1.1 0 -1.1 0 0 -1.1 0 -1.1 1 0 0 0 0 5 0 0 0 0 0 1 0 0 0';;
+#		*)    echo 'ladspa '"$(dpkg -L autotalent | grep autotalent.so)"' autotalent 440 0 0 0 -1.1 0 0 -1.1 0 -1.1 0 0 -1.1 0 -1.1 1 0 0 0 0 5 0 0 0 0 0 1 0 0 0';;
+#		*)    echo 'ladspa '"$(dpkg -L autotalent | grep autotalent.so)"' autotalent 440 0 0 0 -1.1 0 0 -1.1 0 -1.1 0 0 -1.1 0 -1.1 1 0 0 0 0 5 0 0 0 0 0 1 0 0 0';;
+		* )   echo 'ladspa /usr/lib/ladspa/autotalent.so autotalent 440 0 0 0 -1.1 0 0 -1.1 0 -1.1 0 0 -1.1 -1.1 -1.1 1 0 0 0 0 5 0 0 0 0 0 1 0 0 0';;
+#		* )   echo 'ladspa /usr/lib/ladspa/autotalent.so autotalent 440 0 0 0 -1.1 0 -1.1 0 -1.1 0 -1.1 0 -1.1 0 -1.1 1 0 0 0 0 5 0 0 0 0 0 1 0 0 0';;
 	esac
 }
 # $1: low/hi/kero: 犯罪者(低音/高音)/Perfume風ケロケロ音
