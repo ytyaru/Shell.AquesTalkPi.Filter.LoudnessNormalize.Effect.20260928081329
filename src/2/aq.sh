@@ -1,6 +1,9 @@
 HERE="$(dirname "${BASH_SOURCE:-0}")"; 
 cd "$HERE"
 . fx/reverb.sh
+. fx/delay.sh
+. fx/chorus.sh
+. fx/echo.sh
 AQ=/home/pi/root/sys/env/tool/aquestalkpi/1.20/AquesTalkPi
 AQ_TXT='アクエストークパイで音声合成のテストをします。'
 AQ_OPT='-v f2'
@@ -31,6 +34,9 @@ loudness_normalize() {
 }
 # $AQ_OPTにクォートは付けないこと（スペース区切りを有効化するため）
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | loudness_normalize | aplay
-"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | reverb | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | reverb | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | delay 0.9 | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | chorus | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Echo | loudness_normalize | aplay
 
 
