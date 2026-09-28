@@ -4,6 +4,9 @@ cd "$HERE"
 . fx/delay.sh
 . fx/chorus.sh
 . fx/echo.sh
+#. fx/fade.sh
+. fx/fade-in.sh
+. fx/fade-out.sh
 AQ=/home/pi/root/sys/env/tool/aquestalkpi/1.20/AquesTalkPi
 AQ_TXT='アクエストークパイで音声合成のテストをします。'
 AQ_OPT='-v f2'
@@ -37,6 +40,12 @@ loudness_normalize() {
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | reverb | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | delay 0.9 | loudness_normalize | aplay
 #"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | chorus | loudness_normalize | aplay
-"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Echo | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Echo | loudness_normalize | aplay
+#"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | Fade | loudness_normalize | aplay
+"$AQ" $AQ_OPT "$AQ_TXT" | aq_filters "$AQ_OPT" | FadeIn | FadeOut | loudness_normalize | aplay
+
+#WAV_Base64=$(aquestalkpi "$AQ" $AQ_OPT "$AQ_TXT" | base64)
+#WAV=$("$AQ" $AQ_OPT "$AQ_TXT")
+#echo -n "$WAV" | base64 -d | aq_filters "$AQ_OPT" | loudness_normalize | aplay
 
 
